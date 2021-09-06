@@ -16,8 +16,7 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getHero();
@@ -28,13 +27,13 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   save(): void {
     if (this.hero) {
       this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
     }
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }
